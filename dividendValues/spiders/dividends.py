@@ -17,14 +17,15 @@ class DividendsSpider(scrapy.Spider):
 
     def parse(self, response):
         tableData = response.xpath('//table//tbody/tr')
+        header1 = response.xpath('//table//thead/tr/th[1]//text()')[0].extract()
+        header2 = response.xpath('//table//thead/tr/th[2]//text()')[0].extract()
+        header3 = response.xpath('//table//thead/tr/th[3]//text()')[0].extract()
+        header4 = response.xpath('//table//thead/tr/th[4]//text()')[0].extract()
+        header5 = response.xpath('//table//thead/tr/th[5]//text()')[0].extract()
+        header6 = response.xpath('//table//thead/tr/th[6]//text()')[0].extract()
+        
         for rows in tableData:
             textField = rows.xpath('td[1]//text()')[0].extract()
-            header1 = response.xpath('//table//thead/tr/th[1]//text()')[0].extract()
-            header2 = response.xpath('//table//thead/tr/th[2]//text()')[0].extract()
-            header3 = response.xpath('//table//thead/tr/th[3]//text()')[0].extract()
-            header4 = response.xpath('//table//thead/tr/th[4]//text()')[0].extract()
-            header5 = response.xpath('//table//thead/tr/th[5]//text()')[0].extract()
-            header6 = response.xpath('//table//thead/tr/th[6]//text()')[0].extract()
             if "Total" in textField:
                 continue
             yield {
