@@ -19,14 +19,19 @@ class DividendsSpider(scrapy.Spider):
         tableData = response.xpath('//table//tbody/tr')
         for rows in tableData:
             textField = rows.xpath('td[1]//text()')[0].extract()
-            print (textField)
+            header1 = response.xpath('//table//thead/tr/th[1]//text()')[0].extract()
+            header2 = response.xpath('//table//thead/tr/th[2]//text()')[0].extract()
+            header3 = response.xpath('//table//thead/tr/th[3]//text()')[0].extract()
+            header4 = response.xpath('//table//thead/tr/th[4]//text()')[0].extract()
+            header5 = response.xpath('//table//thead/tr/th[5]//text()')[0].extract()
+            header6 = response.xpath('//table//thead/tr/th[6]//text()')[0].extract()
             if "Total" in textField:
                 continue
             yield {
-                'Declared' : rows.xpath('td[1]//text()')[0].extract(),
-                'Ex-Date' : rows.xpath('td[2]//text()')[0].extract(),
-                'Record' : rows.xpath('td[3]//text()')[0].extract(),
-                'Payale' : rows.xpath('td[4]//text()')[0].extract(),
-                'Amount' : rows.xpath('td[5]//text()')[0].extract(),
-                'Type' : rows.xpath('td[6]//text()')[0].extract(),
+                header1 : rows.xpath('td[1]//text()')[0].extract(),
+                header2 : rows.xpath('td[2]//text()')[0].extract(),
+                header3 : rows.xpath('td[3]//text()')[0].extract(),
+                header4 : rows.xpath('td[4]//text()')[0].extract(),
+                header5 : rows.xpath('td[5]//text()')[0].extract(),
+                header6 : rows.xpath('td[6]//text()')[0].extract(),
             }
