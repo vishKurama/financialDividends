@@ -205,45 +205,6 @@ class NasdaqMiddleware(object):
         driver.set_window_size(1440, 800)
         driver.delete_all_cookies()
         driver.get(url)
-        print ("********************")
-        print (url)
-        print ("********************")
-
-        # # clean popup
-        # popup_xpath = (
-        #     ".//button["
-        #     "contains(@class, \"agree-button\")"
-        #     " and "
-        #     "contains(@class, \"eu-cookie-compliance-default-button\")"
-        #     "]"
-        # )
-        # popup_element = WebDriverWait(driver, 60).until(
-        #     EC.element_to_be_clickable((By.XPATH, popup_xpath))
-        # )
-        # loguru.logger.warning(popup_element)
-        # popup_element.click()
-        # time.sleep(5)
-
-        # # select time
-        # time_xpath = (
-        #     ".//div["
-        #     "@class=\"table-tabs__list\""
-        #     "]/button[5]"
-        # )
-        # time_element = WebDriverWait(driver, 60).until(
-        #     EC.element_to_be_clickable((By.XPATH, time_xpath))
-        # )
-        # time_element.click()
-        # time.sleep(5)
-
-        # # page count
-        # download_xpath = (
-        #     ".//a["
-        #     "@class=\"historical-data__download\""
-        #     "]"
-        # )
-        # download = driver.find_element_by_xpath(download_xpath).get_attribute("href")
-        # loguru.logger.info("Get url: {download}".format(download=download))
 
         driver.quit()
 
